@@ -20,6 +20,7 @@ public class Billiards extends JFrame {
 
 	private final int N_BALL = 8;
 	private Ball[] balls;
+	Thread[] hilos;
 
 	public Billiards() {
 
@@ -27,6 +28,9 @@ public class Billiards extends JFrame {
 		board.setForeground(new Color(0, 128, 0));
 		board.setBackground(new Color(0, 128, 0));
 
+		hilos = new Thread[N_BALL];
+		balls = new Ball[N_BALL];
+		
 		initBalls();
 
 		b_start = new JButton("Empezar");
@@ -52,23 +56,21 @@ public class Billiards extends JFrame {
 	}
 
 	private void initBalls() {
-		this.balls = new Ball[N_BALL];
-		for(Ball b : this.balls) {
-			b = new Ball();
+		for(int i = 0;i<balls.length;i++) {
+			balls[i] = new Ball();
 		}
 	}
 
 	private class StartListener implements ActionListener {
-		
-		Thread[] hilos = new Thread[N_BALL];
-		
+				
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			int i = 0;
+			for(int i = 0;i<balls.length;i++) {
+				hilos[i] = new Thread(new BallThread(balls[i]));
+			}
+			
 			for(Thread t : hilos) {
-				t = new Thread(new BallThread(balls[i]));
 				t.start();
-				i++;
 			}
 		}
 	}
