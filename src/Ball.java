@@ -36,7 +36,12 @@ public class Ball {
 		
 		reflect();
 		
-		//TODO Check postcondition
+		
+		assert this.x > Board.LEFTBOARD : "Fuera del tablero";
+		assert this.x < Board.RIGHTBOARD : "Fuera del tablero";
+		assert this.y > Board.TOPBOARD : "Fuera del tablero";
+		assert this.y < Board.BOTTOMBOARD : "Fuera del tablero";
+		
 	}
 
 	private void reflect() {
