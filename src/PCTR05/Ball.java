@@ -24,6 +24,11 @@ public class Ball {
 		y = Billiards.Height/2-16;
 		v = 5;
 		fi =  Math.random() * Math.PI * 2;
+		
+		assert this.x > Board.LEFTBOARD : "Fuera del tablero";
+		assert this.x < Board.RIGHTBOARD : "Fuera del tablero";
+		assert this.y > Board.TOPBOARD : "Fuera del tablero";
+		assert this.y < Board.BOTTOMBOARD : "Fuera del tablero";
 	}
 
 	public synchronized void move() {
@@ -60,6 +65,11 @@ public class Ball {
 		if (Math.abs(y - Board.TOPBOARD) <  Math.abs(dy)) {
 			fi = - fi;
 		}
+		
+		assert this.x > Board.LEFTBOARD : "Fuera del tablero";
+		assert this.x < Board.RIGHTBOARD : "Fuera del tablero";
+		assert this.y > Board.TOPBOARD : "Fuera del tablero";
+		assert this.y < Board.BOTTOMBOARD : "Fuera del tablero";
 	}
 
 	public int getX() {
