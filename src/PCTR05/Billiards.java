@@ -87,8 +87,6 @@ public class Billiards extends JFrame {
 				hilos[i] = null;
 			}
 			
-			hilos = null;
-			
 		}
 	}
 
