@@ -1,3 +1,5 @@
+package PCTR05;
+
 import java.util.concurrent.*;
 
 public class BallThread implements Runnable {
@@ -12,18 +14,18 @@ public class BallThread implements Runnable {
 	
 	@Override
 	public void run() {
+		try {
 		while(!Thread.currentThread().isInterrupted()) {
-			try {
+			
 			bola.move();
 			tablero.repaint();
 			TimeUnit.MILLISECONDS.sleep(30);
-			} catch (InterruptedException e) {
-				System.err.println("Detenido: "+Thread.currentThread().getName());
+			
 			}
+		} catch (InterruptedException e) {
+			System.err.println("Detenido: "+Thread.currentThread().getName());
 		}	
 	}
 	
-	public void finalize() {
-	}
 
 }

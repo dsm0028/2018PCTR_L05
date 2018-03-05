@@ -1,3 +1,5 @@
+package PCTR05;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -66,7 +68,8 @@ public class Billiards extends JFrame {
 				
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			for(int i = 0;i<balls.length;i++) {
+			
+			for(int i = 0;i<hilos.length;i++) {
 				hilos[i] = new Thread(new BallThread(balls[i],board));
 			}
 			
@@ -79,12 +82,9 @@ public class Billiards extends JFrame {
 	private class StopListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			for(Thread t : hilos) {
-				t.interrupt();
-			}
 
-			for(int i = 0;i<balls.length;i++) {
-				hilos[i] = null;
+			for(int i = 0;i<hilos.length;i++) {
+				hilos[i].interrupt();
 			}
 			
 		}

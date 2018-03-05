@@ -1,3 +1,6 @@
+package PCTR05;
+
+
 import java.awt.Image;
 import javax.swing.ImageIcon;
 //TODO Transform the code to be used safely in a concurrent context.  
