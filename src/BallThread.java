@@ -12,16 +12,18 @@ public class BallThread implements Runnable {
 	
 	@Override
 	public void run() {
-		for(;;) {
+		while(!Thread.currentThread().isInterrupted()) {
 			try {
 			bola.move();
 			tablero.repaint();
 			TimeUnit.MILLISECONDS.sleep(30);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.err.println("Detenido: "+Thread.currentThread().getName());
 			}
 		}	
+	}
+	
+	public void finalize() {
 	}
 
 }

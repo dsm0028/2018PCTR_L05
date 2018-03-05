@@ -79,8 +79,16 @@ public class Billiards extends JFrame {
 	private class StopListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Code is executed when stop button is pushed
+			for(Thread t : hilos) {
+				t.interrupt();
+			}
 
+			for(int i = 0;i<balls.length;i++) {
+				hilos[i] = null;
+			}
+			
+			hilos = null;
+			
 		}
 	}
 
