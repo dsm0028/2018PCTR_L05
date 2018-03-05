@@ -59,6 +59,7 @@ public class Billiards extends JFrame {
 		for(int i = 0;i<balls.length;i++) {
 			balls[i] = new Ball();
 		}
+		board.setBalls(balls);
 	}
 
 	private class StartListener implements ActionListener {
@@ -66,7 +67,7 @@ public class Billiards extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			for(int i = 0;i<balls.length;i++) {
-				hilos[i] = new Thread(new BallThread(balls[i]));
+				hilos[i] = new Thread(new BallThread(balls[i],board));
 			}
 			
 			for(Thread t : hilos) {
